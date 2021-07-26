@@ -4,7 +4,7 @@ services:
     image: wordpress:php8.0
     restart: always
     ports:
-      - 5000:80
+      - 29813:80
     environment:
       WORDPRESS_DB_HOST: wordpress-db
       WORDPRESS_DB_USER: wordpress
@@ -12,6 +12,8 @@ services:
       WORDPRESS_DB_NAME: wordpress
     volumes:
       - wordpress-site:/var/www/html
+    depends_on:
+      - wordpress-db
 
   wordpress-db:
     image: mysql:5.7
