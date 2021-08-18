@@ -4,12 +4,15 @@ services:
     image: wordpress:php8.0
     restart: always
     ports:
-      - 29813:80
+      - 8000:80
     environment:
       WORDPRESS_DB_HOST: wordpress-db
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
       WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_HOME', 'https://aiclub.uit.edu.vn');
+        define('WP_SITEURL', 'https://aiclub.uit.edu.vn');
     volumes:
       - wordpress-site:/var/www/html
     depends_on:
